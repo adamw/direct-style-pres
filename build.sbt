@@ -22,9 +22,9 @@ lazy val core: Project = (project in file("core"))
       "com.softwaremill.sttp.tapir" %% "tapir-prometheus-metrics" % tapirVersion,
       "com.softwaremill.sttp.tapir" %% "tapir-swagger-ui-bundle" % tapirVersion,
       "com.softwaremill.sttp.tapir" %% "tapir-json-pickler" % tapirVersion,
-      "com.softwaremill.sttp.client4" %% "core" % "4.0.0-M10",
+      "com.softwaremill.sttp.client4" %% "core" % "4.0.0-M10+4-f5c6b550+20240312-1450-SNAPSHOT",
       "ch.qos.logback" % "logback-classic" % "1.5.3",
-      "com.softwaremill.ox" %% "core" % "0.0.22",
+      "com.softwaremill.ox" %% "core" % "0.0.23",
       scalaTest
     )
   )
