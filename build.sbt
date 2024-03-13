@@ -7,6 +7,7 @@ lazy val commonSettings = commonSmlBuildSettings ++ Seq(
 
 val tapirVersion = "1.9.11"
 val sttpVersion = "4.0.0-M10+4-f5c6b550+20240312-1450-SNAPSHOT"
+val otelVersion = "1.36.0"
 val scalaTest = "org.scalatest" %% "scalatest" % "3.2.18" % Test
 
 lazy val rootProject = (project in file("."))
@@ -29,6 +30,10 @@ lazy val core: Project = (project in file("core"))
       "com.softwaremill.ox" %% "core" % "0.0.23",
       "org.redisson" % "redisson" % "3.27.2",
       "com.github.pureconfig" %% "pureconfig-core" % "0.17.6",
+      "io.opentelemetry" % "opentelemetry-api" % otelVersion,
+      "io.opentelemetry" % "opentelemetry-sdk" % otelVersion,
+      "io.opentelemetry" % "opentelemetry-exporter-otlp" % otelVersion,
+      "io.opentelemetry.semconv" % "opentelemetry-semconv" % "1.23.1-alpha",
       scalaTest
     )
   )

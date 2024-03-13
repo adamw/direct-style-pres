@@ -7,7 +7,7 @@ import org.redisson.config.Config
 import java.util.concurrent.Executors
 
 object SetupRedissonClient:
-  def start(): RedissonClient =
+  def setup(): RedissonClient =
     val config = new Config()
     config.useSingleServer().setAddress("redis://127.0.0.1:6379")
     config.setNettyExecutor(Executors.newVirtualThreadPerTaskExecutor())

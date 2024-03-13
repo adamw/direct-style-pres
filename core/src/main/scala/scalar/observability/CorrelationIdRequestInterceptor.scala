@@ -1,4 +1,4 @@
-package scalar.cid
+package scalar.observability
 
 import sttp.tapir.server.interceptor.{
   EndpointInterceptor,

@@ -1,4 +1,4 @@
-package scalar.cid
+package scalar.observability
 
 import sttp.capabilities
 import sttp.capabilities.Effect
