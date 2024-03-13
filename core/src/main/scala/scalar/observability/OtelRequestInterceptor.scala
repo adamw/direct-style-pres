@@ -11,7 +11,7 @@ import sttp.tapir.server.interceptor.{
 import sttp.tapir.server.netty.loom.Id
 
 class OtelRequestInterceptor(otel: OpenTelemetry) extends RequestInterceptor[Id]:
-  private val tracer = otel.getTracer("scalar")
+  private val tracer = otel.getTracer("tapir")
 
   override def apply[R, B](
       responder: Responder[Id, B],

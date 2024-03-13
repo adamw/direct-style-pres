@@ -1,9 +1,11 @@
 package scalar
 
+import io.opentelemetry.api.OpenTelemetry
 import org.redisson.api.RedissonClient
 import org.slf4j.LoggerFactory
 import ox.channels.{select, Default, Sink}
 import ox.raceEither
+import scalar.observability.Tracing
 import sttp.client4.upicklejson.default.*
 import sttp.client4.{basicRequest, Request, ResponseException, SyncBackend, UriContext}
 import sttp.tapir.*
@@ -22,13 +24,19 @@ def fastAiServerEndpoint(
     redissonClient: RedissonClient,
     backend: SyncBackend,
     updateCacheTasks: Sink[UpdateCacheTask],
-    scalarConfig: ScalarConfig
+    scalarConfig: ScalarConfig,
+    otel: OpenTelemetry
 ): ServerEndpoint[Any, Id] =
+  val tracer = otel.getTracer("logic")
+
   fastAiEndpoint.serverLogic[Id] { question =>
     logger.info(s"Trying to answer question: $question")
 
     raceEither(
-      lookupInCache(redissonClient, question).toRight(()), {
+      Tracing.withSpan(tracer.spanBuilder("redis")) {
+        lookupInCache(redissonClient, question).toRight(())
+      },
+      Tracing.withSpan(tracer.spanBuilder("openai")) {
         Thread.sleep(500)
 
         queryOpenAI(scalarConfig, backend, question) match {

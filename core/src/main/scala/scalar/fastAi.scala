@@ -28,7 +28,8 @@ import scala.io.StdIn
         redissonClient,
         backend,
         updateCacheTasks,
-        scalarConfig
+        scalarConfig,
+        otel
       )
     )
     val nettyBinding = useInScope(SetupNettyHttpServer.start(otel, apiEndpoints))(_.stop())
