@@ -27,7 +27,8 @@ def parseSse(is: InputStream)(using Ox): Source[ServerSentEvent] =
   chunks
     .mapStatefulConcat(() => Array.empty[Byte]) { case (buffer, nextChunk) =>
       @tailrec
-      def splitChunksAtNewLine(buf: Array[Byte], chunk: Array[Byte], acc: Vector[Array[Byte]]): (Array[Byte], Vector[Array[Byte]]) =
+      def splitChunksAtNewLine(buf: Array[Byte], chunk: Array[Byte], acc: Vector[Array[Byte]])
+          : (Array[Byte], Vector[Array[Byte]]) =
         val newlineIdx = chunk.indexOf('\n')
         if newlineIdx == -1 then (buf ++ chunk, acc)
         else

@@ -7,7 +7,7 @@ import scala.util.Random
 
 object CorrelationId:
   val HeaderName = "X-Correlation-ID"
-  
+
   private val forkLocal = ForkLocal[String]("GLOBAL")
 
   private val random = new Random()

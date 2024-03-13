@@ -6,6 +6,9 @@
             <pattern>%d{HH:mm:ss.SSS}%boldYellow(%replace( [%X{cid}] ){' \[\] ', ' '})[%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
+    <logger name="scalar" level="DEBUG" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>

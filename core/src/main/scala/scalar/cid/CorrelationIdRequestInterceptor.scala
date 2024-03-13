@@ -1,6 +1,11 @@
 package scalar.cid
 
-import sttp.tapir.server.interceptor.{EndpointInterceptor, RequestHandler, RequestInterceptor, Responder}
+import sttp.tapir.server.interceptor.{
+  EndpointInterceptor,
+  RequestHandler,
+  RequestInterceptor,
+  Responder
+}
 import sttp.tapir.server.netty.loom.Id
 
 class CorrelationIdRequestInterceptor extends RequestInterceptor[Id]:
@@ -14,5 +19,3 @@ class CorrelationIdRequestInterceptor extends RequestInterceptor[Id]:
         original(request, endpoints)(monad)
       }
     }
-    
-    
