@@ -39,7 +39,7 @@ def fastAiServerEndpoint(
       Tracing.withSpan(tracer.spanBuilder("openai")) {
         Thread.sleep(500)
 
-        queryOpenAI(scalarConfig, backend, question) match {
+        queryOpenAi(scalarConfig, backend, question) match {
           case None => Left(())
           case Some(answer) =>
             select(updateCacheTasks.sendClause(UpdateCacheTask(question, answer)), Default(()))
@@ -52,7 +52,7 @@ def fastAiServerEndpoint(
 private def lookupInCache(redissonClient: RedissonClient, question: Question): Option[Answer] =
   Option(redissonClient.getBucket[String](question.hash).get()).map(Answer(_))
 
-private def queryOpenAI(
+private def queryOpenAi(
     scalarConfig: ScalarConfig,
     backend: SyncBackend,
     question: Question

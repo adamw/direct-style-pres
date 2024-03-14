@@ -1,4 +1,4 @@
-package scalar.observability
+package scalar.other
 
 import org.slf4j.MDC
 import ox.ForkLocal

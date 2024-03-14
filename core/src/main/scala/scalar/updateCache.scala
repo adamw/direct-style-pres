@@ -2,9 +2,9 @@ package scalar
 
 import org.redisson.api.RedissonClient
 import org.slf4j.LoggerFactory
-import ox.{fork, Ox}
-import ox.channels.{Channel, Sink, Source}
+import ox.channels.{Channel, Sink}
 import ox.syntax.forever
+import ox.{Ox, fork}
 
 case class UpdateCacheTask(q: Question, a: Answer)
 

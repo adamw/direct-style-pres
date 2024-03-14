@@ -2,7 +2,6 @@ package scalar
 
 import org.slf4j.LoggerFactory
 import ox.{supervised, useInScope}
-import scalar.observability.CorrelationIdBackend
 import scalar.infrastructure.{SetupNettyHttpServer, SetupOtel, SetupRedissonClient}
 import sttp.client4.DefaultSyncBackend
 import sttp.tapir.*
@@ -19,11 +18,11 @@ import scala.io.StdIn
 
     val otel = SetupOtel().setup()
     val redissonClient = useInScope(SetupRedissonClient.setup())(_.shutdown())
-    val backend = useInScope(CorrelationIdBackend(DefaultSyncBackend()))(_.close())
+    val backend = useInScope(DefaultSyncBackend())(_.close())
 
     val updateCacheTasks = runUpdateCache(redissonClient)
 
-    val apiEndpoints = List(
+    val apiEndpoints: List[ServerEndpoint[Any, Id]] = List(
       fastAiServerEndpoint(
         redissonClient,
         backend,

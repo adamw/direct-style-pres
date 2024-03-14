@@ -1,4 +1,4 @@
-package scalar.observability
+package scalar.other
 
 import sttp.capabilities
 import sttp.capabilities.Effect
