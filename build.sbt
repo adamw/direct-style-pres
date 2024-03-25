@@ -1,7 +1,7 @@
 import com.softwaremill.SbtSoftwareMillCommon.commonSmlBuildSettings
 
 val tapirVersion = "1.9.11"
-val sttpVersion = "4.0.0-M10+4-f5c6b550+20240312-1450-SNAPSHOT"
+val sttpVersion = "4.0.0-M11"
 val otelVersion = "1.36.0"
 val scalaTest = "org.scalatest" %% "scalatest" % "3.2.18" % Test
 
