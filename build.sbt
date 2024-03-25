@@ -3,7 +3,6 @@ import com.softwaremill.SbtSoftwareMillCommon.commonSmlBuildSettings
 val tapirVersion = "1.9.11"
 val sttpVersion = "4.0.0-M11"
 val otelVersion = "1.36.0"
-val scalaTest = "org.scalatest" %% "scalatest" % "3.2.18" % Test
 
 commonSmlBuildSettings
 
@@ -27,6 +26,5 @@ libraryDependencies ++= Seq(
   "io.opentelemetry" % "opentelemetry-api" % otelVersion,
   "io.opentelemetry" % "opentelemetry-sdk" % otelVersion,
   "io.opentelemetry" % "opentelemetry-exporter-otlp" % otelVersion,
-  "io.opentelemetry.semconv" % "opentelemetry-semconv" % "1.23.1-alpha",
-  scalaTest
+  "io.opentelemetry.semconv" % "opentelemetry-semconv" % "1.23.1-alpha"
 )
