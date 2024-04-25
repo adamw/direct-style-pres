@@ -1,6 +1,6 @@
 # Direct Style Scala Stack - an experiment
 
-Talk from [Scalar 2024](https://scalar-conf.com/). To try out:
+Talk from Scalar 2024 (see the [video](https://scalar-conf.com/)). To try out:
 
 * install [sbt](https://www.scala-sbt.org/)
 * start the docker containers defined in `docker-compose.yml` (`docker-compose up`)
